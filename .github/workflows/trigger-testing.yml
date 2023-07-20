@@ -24,5 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: "Event type: ${{ github.event_name }}"
+        run: |
+          echo "Event type: ${{ github.event_name }}"
+
+      - name: Print GitHub event action
+        run: |
+          echo "Event action: ${{ github.event.action }}"
+
       - name: Writing to screen
         run: echo "Testing some triggers in a workflow"
