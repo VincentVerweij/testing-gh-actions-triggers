@@ -14,6 +14,12 @@ jobs:
     name: Doing something
     runs-on: ubuntu-latest
 
+    # When creating a branch, both the 'push' and 'create' triggertypes trigger a workflow run.
+    # To avoid having to pay for an additional run, adding this will cancel one of the workflow runs.
+    concurrency:
+      group: ${{ github.head_ref }}-init
+      cancel-in-progress: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
